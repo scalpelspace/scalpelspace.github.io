@@ -92,9 +92,9 @@ User controllable hardware and/or firmware driven inputs.
 
 Onboard battery supplies.
 
-| Battery               | Ref | Description                      |
-|-----------------------|:---:|----------------------------------|
-| `CR1220 battery cell` | BT1 | u-blox GPS RTC and ephemeris RAM |
+| Battery               | Ref | Description                       |
+|-----------------------|:---:|-----------------------------------|
+| `CR1220 battery cell` | BT1 | u-blox GNSS RTC and ephemeris RAM |
 
 ### 2.4 LEDs
 
@@ -111,9 +111,9 @@ LEDs used to show board status and/or user controllable.
 
 | Test Point        | Ref | Description               |
 |-------------------|:---:|---------------------------|
-| `GPS NRST`        | TP1 | u-blox GPS NRST net       |
-| `GPS RX`          | TP2 | u-blox GPS RX net         |
-| `GPS TX`          | TP3 | u-blox GPS TX net         |
+| `GNSS NRST`       | TP1 | u-blox GNSS NRST net      |
+| `GNSS RX`         | TP2 | u-blox GNSS RX net        |
+| `GNSS TX`         | TP3 | u-blox GNSS TX net        |
 | `WS2812B LED PWM` | TP4 | DOUT from onboard WS2812B |
 
 ### 2.6 Power Supply

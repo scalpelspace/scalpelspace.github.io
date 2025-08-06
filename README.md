@@ -8,6 +8,10 @@ ScalpelSpace technical documentation GitHub pages website.
 
 [Momentum: GNSS, 9-DOF IMU, Barometer Sensor Shield](products/momentum)
 
+### Breakout Hats
+
+[Mini CAN FD Hat (40-Pin)](products/can_hat_40)
+
 ## Software
 
 ### Desktop Tools

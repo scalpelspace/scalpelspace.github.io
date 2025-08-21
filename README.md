@@ -10,7 +10,7 @@ ScalpelSpace technical documentation GitHub pages website.
 
 ### Breakout Hats
 
-[Mini CAN FD Hat (40-Pin)](products/can_hat_40)
+[CAN FD Hat (40-Pin)](products/can_hat_40)
 
 ## Software
 

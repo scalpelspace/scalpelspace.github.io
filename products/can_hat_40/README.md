@@ -1,4 +1,4 @@
-# Mini CAN FD Hat (40-Pin)
+# CAN FD Hat (40-Pin)
 
 ---
 
@@ -6,7 +6,7 @@
   <summary>Table of Contents</summary>
 
 <!-- TOC -->
-* [Mini CAN FD Hat (40-Pin)](#mini-can-fd-hat-40-pin)
+* [CAN FD Hat (40-Pin)](#can-fd-hat-40-pin)
   * [1 Overview](#1-overview)
     * [1.1 Bill of Materials (BOM)](#11-bill-of-materials-bom)
   * [2 Board Specifications](#2-board-specifications)
@@ -14,6 +14,7 @@
     * [2.2 Switches & Jumpers](#22-switches--jumpers)
     * [2.3 Linux (Ubuntu) Setup](#23-linux-ubuntu-setup)
   * [3 Schematics](#3-schematics)
+  * [4 CAD 3D Model](#4-cad-3d-model)
 <!-- TOC -->
 
 </details>
@@ -99,3 +100,9 @@ This setup is for Raspberry Pis running Ubuntu and similar Debian distros.
 Download PDF: [can_hat_40_pcb-schematic.pdf](docs/can_hat_40_pcb-schematic.pdf).
 
 ![can_hat_40_pcb-schematic-1.png](docs/can_hat_40_pcb-schematic/can_hat_40_pcb-schematic-1.png)
+
+---
+
+## 4 CAD 3D Model
+
+Download PDF: [can_hat_40_pcb-3D.step](docs/can_hat_40_pcb-3D.step).

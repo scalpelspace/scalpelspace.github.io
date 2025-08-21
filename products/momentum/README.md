@@ -28,6 +28,7 @@
     * [2.9 STM32L432KC Flashing](#29-stm32l432kc-flashing)
     * [2.10 USB-C Serial Interface](#210-usb-c-serial-interface)
   * [3 Schematics](#3-schematics)
+  * [4 CAD 3D Model](#4-cad-3d-model)
 <!-- TOC -->
 
 </details>
@@ -225,7 +226,7 @@ BOOT0 must be asserted manually to enter the bootloader via the through-hole
 
 ## 3 Schematics
 
-Download PDF: [momentum_pcb-schematic.pdf](docs/momentum_pcb-schematic.pdf)
+Download PDF: [momentum_pcb-schematic.pdf](docs/momentum_pcb-schematic.pdf).
 
 ![momentum_pcb-schematic-1.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-1.png)
 ![momentum_pcb-schematic-2.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-2.png)
@@ -235,3 +236,9 @@ Download PDF: [momentum_pcb-schematic.pdf](docs/momentum_pcb-schematic.pdf)
 ![momentum_pcb-schematic-6.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-6.png)
 ![momentum_pcb-schematic-7.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-7.png)
 ![momentum_pcb-schematic-8.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-8.png)
+
+---
+
+## 4 CAD 3D Model
+
+Download STEP: [momentum_pcb-3D.step](docs/momentum_pcb-3D.step).

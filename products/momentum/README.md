@@ -126,61 +126,66 @@ The board can be powered by either of the following methods:
 
 #### 2.6.1 5 V Power OR Switch
 
-The 5 V supply is managed by an OR power switch (TPS2116DRL).
+The 5 V supply is controlled by an OR-ing power switch (TPS2116DRL).
 
-The `5V` pin from the Uno-style interface takes priority. As long as ~1 V or
-more is present on this pin, it will be used as the power source. If this
-condition is not met, the board automatically switches to the USB-C 5 V supply.
+- The Uno-style 5V pin has priority: if ~1 V or higher is present, it is used as
+  the source.
+- If this condition is not met, the board automatically switches to the USB-C 5
+  V supply.
 
 #### 2.6.2 Optional 5 V Pin Supply Protection
 
-The `5V` pin supply can be configured with optional protection diodes (default
-not included), see the following instructions:
+The `5V` pin supply can be optionally protected with diodes (not installed by
+default). To enable protection, follow these steps:
 
-- The `5 V bypass` jumper must be cut to stop shorting of the schottky diode
-  pads, enforcing the schottky diode.
+- Cut the `5 V bypass` jumper to remove the short across the schottky diode
+  pads, ensuring use of the schottky diode.
 - Schottky diode required (designator `D1`, footprint SMA).
     - Intended to provide reverse polarity protection.
 - TVS diode required (designator `D2`, footprint SMB).
-    - Intended to provide short high voltage clamping.
+    - Intended to provide short transient over-voltage clamping.
 
 #### 2.6.3 3.3 V LDO Supply
 
 The 3.3 V supply is managed onboard by a dedicated 5 V to 3.3 V LDO, independent
 of any connected board.
 
-If the user wishes to use the Momentum dev board's 3.3 V supply for low current
-applications, the `Interface 3.3 V output` jumper can be bridged, allowing for
-3.3 V to be supplied from the onboard LDO. This should only be done with
-caution, as a connected main controller which would supply its own 3.3 V on the
-same Uno-style interface `3.3V` output pin.
+If the user wishes to use the Momentum dev board's 3.3 V supply as an output
+supply for low current applications, the `Interface 3.3 V output` jumper can be
+bridged, allowing for 3.3 V to be supplied from the onboard LDO.
+
+> **Warning:** This modification should be evaluated for each specific
+> application. Many development boards provide their own regulated 3.3 V output
+> on the Uno-style `3.3V` pin. Connecting this pin in parallel with another
+> 3.3 V supply can cause contention between the two outputs, potentially
+> resulting in damage or unstable operation.
 
 ### 2.7 SPI Interface
 
-All SPI pins interfacing with connected boards are level-shifted. By default,
-the external SPI pins are level shifted to 5 V. However, it can also be shifted
-to 3.3 V via the `Level shifter V IO` 3-pad jumper.
+All SPI pins interfacing with external boards are level-shifted. By default, the
+SPI bus is shifted to 5 V. However, it can also be shifted to 3.3 V via the
+`Level shifter V IO` 3-pad jumper.
 
 > See section [2.8 Level Shifter](#28-level-shifter) for details.
 
-The SPI CS pin can be swapped between the Uno-style interface pins `D10`
-(default) and `D8` via the `Interface SPI CS pin select` jumper. This is
-intended to help resolve any pin conflicts.
+The SPI CS pin can be reassigned between Uno-style pins `D10` (default) and `D8`
+via the `Interface SPI CS pin select` jumper, allowing flexibility in resolving
+pin conflicts.
 
 ### 2.8 Level Shifter
 
 Note the level shifter interfaces with the SPI singals (CIPO, COPI, SCK and CS)
 as well as the WS2812B PWM data line. Adjusting the `Level shifter V IO` 3-pad
-jumper toggles the voltage shifting between 3.3 V and 5 V.
+jumper selects between 3.3 V and 5 V.
 
-If you opt for 3.3 V shifting, be aware that the **WS2812B LED may exhibit
-instability**. The WS2812B datasheet states:
+When set to 3.3 V, note that the **WS2812B LED may become unstable**. According
+to the WS2812B datasheet:
 
-1. DIN high signal >= 0.7 * VDD
+1. DIN high >= 0.7 * VDD
 2. DIN low <= 0.3 * VDD
 
-Thus, a 3.3 V signal may not be able to meet the DIN high requirement, reducing
-functionality of the WS2812B in this level shifting configuration.
+A 3.3 V logic-high signal may not satisfy the DIN high threshold, potentially
+causing reduced or unreliable functionality in this configuration.
 
 ### 2.9 STM32L432KC Flashing
 
@@ -210,17 +215,18 @@ serial and UART bootloader interface. In this method, the through-hole
 ### 2.10 USB-C Serial Interface
 
 The USB-C interface connected via the CP2102N USB-to-UART is primarily designed
-as a UART bootloader flashing interface, however can also be used as a serial
+as a UART bootloader flashing interface, however it can also be used as a serial
 interface for simple communication to a desktop computer.
 
-Due to the design for hands-free flashing, the STM32's BOOT0 will be controlled
-by the CP2102N's DTR pin. Thus, when a COM port is established BOOT0 will be
-raised high, entering the bootloader. To prevent this behaviour, the
-`BOOT0 DTR bridge` jumper can be cut, allowing for USB-C serial communication.
+Due to the design for hands-free flashing, the STM32's BOOT0 is controlled by
+the CP2102N's DTR pin. Consequently, when a serial port is established BOOT0
+will be raised high, entering the bootloader. To prevent this behaviour, the
+`BOOT0 DTR bridge` jumper must be cut, allowing for USB-C serial communication
+without triggering the bootloader.
 
 If the user wishes to still use the UART bootloader with this modification, the
-BOOT0 must be asserted manually to enter the bootloader via the through-hole
-`BOOT0 jumper`.
+BOOT0 must be asserted manually to enter the bootloader via the 2-pin
+through-hole `BOOT0 jumper`.
 
 ---
 

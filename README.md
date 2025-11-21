@@ -1,4 +1,4 @@
-# scalpelspace.github.io
+# ScalpelSpace Docs
 
 ScalpelSpace technical documentation GitHub pages website.
 

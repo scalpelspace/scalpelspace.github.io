@@ -42,6 +42,3 @@ an integrated controller.
    board sits on the bus (enable 120 Ohm only at the physical ends of the bus).
 4. Connect the 3-pin CAN side to your bus (`GND`, CAN high, CAN low).
 5. Flash the example firmware and confirm the link.
-
-See the sections below for the full bill of materials, connector and
-jumper reference, and a complete working example.

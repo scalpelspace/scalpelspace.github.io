@@ -1,14 +1,10 @@
 ---
-title: Momentum
+title: Momentum - Hardware
 layout: default
-parent: Products
-nav_order: 1
+parent: Momentum
+grand_parent: Products
+nav_order: 3
 ---
-
-# Momentum: GNSS, 9-DOF IMU, Barometer Sensor Shield
-
-> This document also applies to **Momentum Lite** which the same board design,
-> with reduced components (no GNSS).
 
 ---
 
@@ -16,10 +12,8 @@ nav_order: 1
   <summary>Table of Contents</summary>
 
 <!-- TOC -->
-* [Momentum: GNSS, 9-DOF IMU, Barometer Sensor Shield](#momentum-gnss-9-dof-imu-barometer-sensor-shield)
   * [1 Overview](#1-overview)
     * [1.1 Bill of Materials (BOM)](#11-bill-of-materials-bom)
-    * [1.2 Block Diagram](#12-block-diagram)
   * [2 Board Specifications](#2-board-specifications)
     * [2.1 Connectors](#21-connectors)
     * [2.2 Switches & Jumpers](#22-switches--jumpers)
@@ -56,15 +50,6 @@ nav_order: 1
 | SAM-M10Q                 | u-blox                  | RF Receiver Galileo, GLONASS, GPS |        1 |       |
 | WS2812B                  | (Various)               | PWM Addressable RGB LED           |        1 |       |
 
-> **Note:** Momentum was originally designed for the BNO085, however hardware
-> files were updated to reflect use of the newer BNO086. Firmware is cross
-> compatible for both the BNO085/6, however source files maintain the use of
-> the "BNO085" naming.
-
-### 1.2 Block Diagram
-
-![momentum.drawio.png](docs/momentum.drawio.png)
-
 ---
 
 ## 2 Board Specifications
@@ -100,9 +85,9 @@ User controllable hardware and/or firmware driven inputs.
 
 Onboard battery supplies.
 
-| Battery               | Ref | Description                       |
-|-----------------------|:---:|-----------------------------------|
-| `CR1220 battery cell` | BT1 | u-blox GNSS RTC and ephemeris RAM |
+| Battery               | Ref | Description                                                   |
+|-----------------------|:---:|---------------------------------------------------------------|
+| `CR1220 battery cell` | BT1 | u-blox GPS RTC and ephemeris RAM (reverse polarity protected) |
 
 ### 2.4 LEDs
 
@@ -119,9 +104,9 @@ LEDs used to show board status and/or user controllable.
 
 | Test Point        | Ref | Description               |
 |-------------------|:---:|---------------------------|
-| `GNSS NRST`       | TP1 | u-blox GNSS NRST net      |
-| `GNSS RX`         | TP2 | u-blox GNSS RX net        |
-| `GNSS TX`         | TP3 | u-blox GNSS TX net        |
+| `GPS NRST`        | TP1 | u-blox GPS NRST net       |
+| `GPS RX`          | TP2 | u-blox GPS RX net         |
+| `GPS TX`          | TP3 | u-blox GPS TX net         |
 | `WS2812B LED PWM` | TP4 | DOUT from onboard WS2812B |
 
 ### 2.6 Power Supply
@@ -133,66 +118,61 @@ The board can be powered by either of the following methods:
 
 #### 2.6.1 5 V Power OR Switch
 
-The 5 V supply is controlled by an OR-ing power switch (TPS2116DRL).
+The 5 V supply is managed by an OR power switch (TPS2116DRL).
 
-- The Uno-style 5V pin has priority: if ~1 V or higher is present, it is used as
-  the source.
-- If this condition is not met, the board automatically switches to the USB-C 5
-  V supply.
+The `5V` pin from the Uno-style interface takes priority. As long as ~1 V or
+more is present on this pin, it will be used as the power source. If this
+condition is not met, the board automatically switches to the USB-C 5 V supply.
 
 #### 2.6.2 Optional 5 V Pin Supply Protection
 
-The `5V` pin supply can be optionally protected with diodes (not installed by
-default). To enable protection, follow these steps:
+The `5V` pin supply can be configured with optional protection diodes (default
+not included), see the following instructions:
 
-- Cut the `5 V bypass` jumper to remove the short across the schottky diode
-  pads, ensuring use of the schottky diode.
+- The `5 V bypass` jumper must be cut to stop shorting of the schottky diode
+  pads, enforcing the schottky diode.
 - Schottky diode required (designator `D1`, footprint SMA).
     - Intended to provide reverse polarity protection.
 - TVS diode required (designator `D2`, footprint SMB).
-    - Intended to provide short transient over-voltage clamping.
+    - Intended to provide short high voltage clamping.
 
 #### 2.6.3 3.3 V LDO Supply
 
 The 3.3 V supply is managed onboard by a dedicated 5 V to 3.3 V LDO, independent
 of any connected board.
 
-If the user wishes to use the Momentum dev board's 3.3 V supply as an output
-supply for low current applications, the `Interface 3.3 V output` jumper can be
-bridged, allowing for 3.3 V to be supplied from the onboard LDO.
-
-> **Warning:** This modification should be evaluated for each specific
-> application. Many development boards provide their own regulated 3.3 V output
-> on the Uno-style `3.3V` pin. Connecting this pin in parallel with another
-> 3.3 V supply can cause contention between the two outputs, potentially
-> resulting in damage or unstable operation.
+If the user wishes to use the Momentum dev board's 3.3 V supply for low current
+applications, the `Interface 3.3 V output` jumper can be bridged, allowing for
+3.3 V to be supplied from the onboard LDO. This should only be done with
+caution, as a connected main controller which would supply its own 3.3 V on the
+same Uno-style interface `3.3V` output pin.
 
 ### 2.7 SPI Interface
 
-All SPI pins interfacing with external boards are level-shifted. By default, the
-SPI bus is shifted to 5 V. However, it can also be shifted to 3.3 V via the
-`Level shifter V IO` 3-pad jumper.
+All SPI pins interfacing with connected boards are level-shifted. By default,
+the external SPI pins are level shifted to 5 V. However, it can also be shifted
+to 3.3 V via the `Level shifter V IO` 3-pad jumper.
 
 > See section [2.8 Level Shifter](#28-level-shifter) for details.
 
-The SPI CS pin can be reassigned between Uno-style pins `D10` (default) and `D8`
-via the `Interface SPI CS pin select` jumper, allowing flexibility in resolving
-pin conflicts.
+The SPI CS pin can be swapped between the Uno-style interface pins `D10`
+(default) and `D8` via the `Interface SPI CS pin select` jumper. This is
+intended to help resolve any pin conflicts.
 
 ### 2.8 Level Shifter
 
 Note the level shifter interfaces with the SPI singals (CIPO, COPI, SCK and CS)
 as well as the WS2812B PWM data line. Adjusting the `Level shifter V IO` 3-pad
-jumper selects between 3.3 V and 5 V.
+jumper toggles the voltage shifting between 3.3 V and 5 V.
 
-When set to 3.3 V, note that the **WS2812B LED may become unstable**. According
-to the WS2812B datasheet:
+If you opt for 3.3 V shifting, be aware that the **WS2812B LED may exhibit
+instability**. The WS2812B datasheet states:
 
-1. DIN high >= 0.7 * VDD
+1. DIN high signal >= 0.7 * VDD
 2. DIN low <= 0.3 * VDD
 
-A 3.3 V logic-high signal may not satisfy the DIN high threshold, potentially
-causing reduced or unreliable functionality in this configuration.
+Thus, a 3.3 V signal may not be able to meet the DIN high requirement, reducing
+functionality of the WS2812B in this level shifting configuration.
 
 ### 2.9 STM32L432KC Flashing
 
@@ -222,36 +202,35 @@ serial and UART bootloader interface. In this method, the through-hole
 ### 2.10 USB-C Serial Interface
 
 The USB-C interface connected via the CP2102N USB-to-UART is primarily designed
-as a UART bootloader flashing interface, however it can also be used as a serial
+as a UART bootloader flashing interface, however can also be used as a serial
 interface for simple communication to a desktop computer.
 
-Due to the design for hands-free flashing, the STM32's BOOT0 is controlled by
-the CP2102N's DTR pin. Consequently, when a serial port is established BOOT0
-will be raised high, entering the bootloader. To prevent this behaviour, the
-`BOOT0 DTR bridge` jumper must be cut, allowing for USB-C serial communication
-without triggering the bootloader.
+Due to the design for hands-free flashing, the STM32's BOOT0 will be controlled
+by the CP2102N's DTR pin. Thus, when a COM port is established BOOT0 will be
+raised high, entering the bootloader. To prevent this behaviour, the
+`BOOT0 DTR bridge` jumper can be cut, allowing for USB-C serial communication.
 
 If the user wishes to still use the UART bootloader with this modification, the
-BOOT0 must be asserted manually to enter the bootloader via the 2-pin
-through-hole `BOOT0 jumper`.
+BOOT0 must be asserted manually to enter the bootloader via the through-hole
+`BOOT0 jumper`.
 
 ---
 
 ## 3 Schematics
 
-Download PDF: [momentum_pcb-schematic.pdf](docs/momentum_pcb-schematic.pdf).
+Download PDF: [momentum_pcb-schematic.pdf](assets/momentum_pcb-schematic.pdf).
 
-![momentum_pcb-schematic-1.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-1.png)
-![momentum_pcb-schematic-2.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-2.png)
-![momentum_pcb-schematic-3.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-3.png)
-![momentum_pcb-schematic-4.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-4.png)
-![momentum_pcb-schematic-5.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-5.png)
-![momentum_pcb-schematic-6.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-6.png)
-![momentum_pcb-schematic-7.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-7.png)
-![momentum_pcb-schematic-8.png](docs/momentum_pcb-schematic/momentum_pcb-schematic-8.png)
+![momentum_pcb-schematic-1.png](assets/momentum_pcb-schematic-1.png)
+![momentum_pcb-schematic-2.png](assets/momentum_pcb-schematic-2.png)
+![momentum_pcb-schematic-3.png](assets/momentum_pcb-schematic-3.png)
+![momentum_pcb-schematic-4.png](assets/momentum_pcb-schematic-4.png)
+![momentum_pcb-schematic-5.png](assets/momentum_pcb-schematic-5.png)
+![momentum_pcb-schematic-6.png](assets/momentum_pcb-schematic-6.png)
+![momentum_pcb-schematic-7.png](assets/momentum_pcb-schematic-7.png)
+![momentum_pcb-schematic-8.png](assets/momentum_pcb-schematic-8.png)
 
 ---
 
 ## 4 CAD 3D Model
 
-Download STEP: [momentum_pcb-3D.step](docs/momentum_pcb-3D.step).
+Download STEP: [momentum_pcb-3D.step](assets/momentum_pcb-3D.step).

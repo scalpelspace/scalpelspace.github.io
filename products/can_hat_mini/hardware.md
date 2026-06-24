@@ -2,6 +2,7 @@
 title: SPI-CAN Breakout - Hardware
 layout: default
 parent: SPI-CAN Breakout
+grand_parent: Products
 nav_order: 2
 ---
 

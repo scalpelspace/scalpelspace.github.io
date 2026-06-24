@@ -2,6 +2,7 @@
 title: SPI-CAN Breakout - Examples
 layout: default
 parent: SPI-CAN Breakout
+grand_parent: Products
 nav_order: 1
 ---
 

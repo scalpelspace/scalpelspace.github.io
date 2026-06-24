@@ -2,6 +2,7 @@
 title: SPI-CAN 40-pin Hat - Examples
 layout: default
 parent: SPI-CAN 40-pin Hat
+grand_parent: Products
 nav_order: 1
 ---
 

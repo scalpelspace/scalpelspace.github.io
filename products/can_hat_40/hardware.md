@@ -1,11 +1,9 @@
 ---
-title: CAN Hat (40-pin)
+title: SPI-CAN 40-pin Hat - Hardware
 layout: default
-parent: Products
-nav_order: 3
+parent: SPI-CAN 40-pin Hat
+nav_order: 2
 ---
-
-# CAN FD Hat (40-Pin)
 
 ---
 
@@ -13,22 +11,18 @@ nav_order: 3
   <summary>Table of Contents</summary>
 
 <!-- TOC -->
-* [CAN FD Hat (40-Pin)](#can-fd-hat-40-pin)
-  * [1 Overview](#1-overview)
+  * [Overview](#overview)
     * [1.1 Bill of Materials (BOM)](#11-bill-of-materials-bom)
   * [2 Board Specifications](#2-board-specifications)
     * [2.1 Connectors](#21-connectors)
     * [2.2 Switches & Jumpers](#22-switches--jumpers)
-    * [2.3 Linux (Ubuntu) Setup](#23-linux-ubuntu-setup)
   * [3 Schematics](#3-schematics)
   * [4 CAD 3D Model](#4-cad-3d-model)
 <!-- TOC -->
 
 </details>
 
----
-
-## 1 Overview
+## Overview
 
 ### 1.1 Bill of Materials (BOM)
 
@@ -61,55 +55,16 @@ User controllable hardware and/or firmware driven inputs.
 | `CAN termination` | SW1 | 1 + 2 = 120 Ohm termination, 2 + 3 = No termination |
 | `CAN silent`      | JP1 | Open = normal operation, closed = silent mode       |
 
-### 2.3 Linux (Ubuntu) Setup
-
-This setup is for Raspberry Pis running Ubuntu and similar Debian distros.
-
-1. Install MCP251XFD required drivers (example showing [
-   `can-utils`](https://github.com/linux-can/can-utils)).
-   ```shell
-   sudo apt update
-   sudo apt install -y can-utils
-   ```
-2. Enable SPI and add the MCP2518FD overlay.
-   ```shell
-   sudo nano /boot/firmware/config.txt
-   ```
-   ```shell
-   # Add the following lines to config.txt:
-   dtparam=spi=on
-   dtoverlay=mcp251xfd,spi0-0,oscillator=40000000,interrupt=22,spimaxfrequency=10000000
-   ```
-3. Reboot the system.
-   ```shell
-   sudo reboot
-   ```
-4. Run CAN.
-    - For CAN classic setup (example for 500 kbps, 87.5% sample point, bus error
-      reporting):
-   ```shell
-   sudo ip link set can0 down 2>/dev/null || true
-   sudo ip link set can0 type can bitrate 500000 sample-point 0.875 berr-reporting on
-   sudo ip link set can0 up
-   ```
-    - For CAN FD setup (example for 1 Mbps nominal rate, 80% sample point, 4
-      Mbps data phase rate, bus error reporting):
-   ```shell
-   sudo ip link set can0 down
-   sudo ip link set can0 type can bitrate 1000000 sample-point 0.80 dbitrate 4000000 dsample-point 0.80 fd on berr-reporting on
-   sudo ip link set can0 up
-   ```
-
 ---
 
 ## 3 Schematics
 
-Download PDF: [can_hat_40_pcb-schematic.pdf](docs/can_hat_40_pcb-schematic.pdf).
+Download PDF: [can_hat_40_pcb-schematic.pdf](assets/can_hat_40_pcb-schematic.pdf).
 
-![can_hat_40_pcb-schematic-1.png](docs/can_hat_40_pcb-schematic/can_hat_40_pcb-schematic-1.png)
+![can_hat_40_pcb-schematic-1.png](assets/can_hat_40_pcb-schematic-1.png)
 
 ---
 
 ## 4 CAD 3D Model
 
-Download PDF: [can_hat_40_pcb-3D.step](docs/can_hat_40_pcb-3D.step).
+Download PDF: [can_hat_40_pcb-3D.step](assets/can_hat_40_pcb-3D.step).

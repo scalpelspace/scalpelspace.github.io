@@ -214,12 +214,12 @@ void loop() {
 ## 5 Schematics
 
 Download
-PDF: [can_hat_mini_pcb-schematic.pdf](docs/can_hat_mini_pcb-schematic.pdf).
+PDF: [can_hat_mini_pcb-schematic.pdf](assets/can_hat_mini_pcb-schematic.pdf).
 
-![can_hat_mini_pcb-schematic-1.png](docs/can_hat_mini_pcb-schematic/can_hat_mini_pcb-schematic-1.png)
+![can_hat_mini_pcb-schematic-1.png](assets/can_hat_mini_pcb-schematic/can_hat_mini_pcb-schematic-1.png)
 
 ---
 
 ## 6 CAD 3D Model
 
-Download PDF: [can_hat_mini_pcb-3D.step](docs/can_hat_mini_pcb-3D.step).
+Download STEP file: [can_hat_mini_pcb-3D.step](assets/can_hat_mini_pcb-3D.step).

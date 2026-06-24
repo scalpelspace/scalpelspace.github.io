@@ -1,6 +1,6 @@
-# Jkelly Configuration.
+# Just the Docs Configuration (https://just-the-docs.com/).
 
-# Super simple, default everything.
-#auto: true
-
-markdown: GFM  # GitHub Flavoured Markdown: https://github.github.com/gfm/.
+remote_theme: just-the-docs/just-the-docs
+search_enabled: true  # Enable the built-in client-side search.
+color_scheme: dark
+heading_anchors: true

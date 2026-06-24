@@ -1,3 +1,9 @@
+---
+title: Home
+layout: home
+nav_order: 1
+---
+
 # ScalpelSpace Docs
 
 ScalpelSpace technical documentation GitHub pages website.

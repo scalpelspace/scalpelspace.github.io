@@ -1,3 +1,10 @@
+---
+title: Momentum
+layout: default
+parent: Products
+nav_order: 1
+---
+
 # Momentum: GNSS, 9-DOF IMU, Barometer Sensor Shield
 
 > This document also applies to **Momentum Lite** which the same board design,

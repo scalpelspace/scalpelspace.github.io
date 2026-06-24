@@ -216,7 +216,7 @@ void loop() {
 Download
 PDF: [can_hat_mini_pcb-schematic.pdf](assets/can_hat_mini_pcb-schematic.pdf).
 
-![can_hat_mini_pcb-schematic-1.png](assets/can_hat_mini_pcb-schematic/can_hat_mini_pcb-schematic-1.png)
+![can_hat_mini_pcb-schematic-1.png](assets/can_hat_mini_pcb-schematic-1.png)
 
 ---
 

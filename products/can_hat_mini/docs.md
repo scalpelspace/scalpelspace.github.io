@@ -9,6 +9,8 @@ nav_order: 2
 
 Product codename: `can_hat_mini`.
 
+---
+
 A small-footprint, breadboard-friendly breakout board that bridges an SPI host
 to a CAN bus. It exposes a standard SPI interface on one side and a CAN
 transceiver on the other, letting any microcontroller with SPI talk CAN without

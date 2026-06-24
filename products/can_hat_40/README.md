@@ -2,7 +2,7 @@
 title: CAN Hat (40-pin)
 layout: default
 parent: Products
-nav_order: 2
+nav_order: 3
 ---
 
 # CAN FD Hat (40-Pin)

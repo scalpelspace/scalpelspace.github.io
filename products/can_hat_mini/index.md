@@ -27,6 +27,8 @@ an integrated controller.
 - Jumper selectable **silent mode** (listen-only) for bus monitoring.
 - 1x **M2.5 mounting hole**.
 
+---
+
 ## Getting Started
 
 1. Wire the 8-pin header to your host:

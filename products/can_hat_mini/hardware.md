@@ -13,7 +13,6 @@ nav_order: 2
 <!-- TOC -->
   * [1 Overview](#1-overview)
     * [1.1 Bill of Materials (BOM)](#11-bill-of-materials-bom)
-    * [1.2 Bill of Materials (BOM)](#12-bill-of-materials-bom)
   * [2 Board Specifications](#2-board-specifications)
     * [2.1 Connectors](#21-connectors)
     * [2.2 Switches & Jumpers](#22-switches--jumpers)
@@ -28,17 +27,6 @@ nav_order: 2
 ## 1 Overview
 
 ### 1.1 Bill of Materials (BOM)
-
-| Manufacturer Part Number | Manufacturer         | Description                   | Quantity | Notes |
-|--------------------------|----------------------|-------------------------------|---------:|-------|
-| MCP2518FDT-E/QBB         | Microchip Technology | CAN FD to SPI Controller      |        1 |       |
-| TJA1057BTK               | NXP USA Inc.         | CAN Bus Transceiver           |        1 |       |
-| JS202011JAQN             | C&K                  | DPDT Slide Switch Right Angle |        1 |       |
-| ECS-400-10-37B2-CKY-TR   | ECS Inc.             | 40 MHz crystal                |        1 |       |
-
----
-
-### 1.2 Bill of Materials (BOM)
 
 | Manufacturer Part Number | Manufacturer         | Description                   | Quantity | Notes |
 |--------------------------|----------------------|-------------------------------|---------:|-------|

@@ -9,6 +9,8 @@ nav_order: 1
 
 Product codename: `momentum`.
 
+[Firmware](https://github.com/scalpelspace/momentum) | [Driver](https://github.com/scalpelspace/momentum_driver) | [Arduino Library](https://github.com/scalpelspace/scalpelspace_momentum)
+
 ---
 
 A Uno-style footprint sensor integration board that bridges an SPI or CAN

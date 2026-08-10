@@ -9,7 +9,7 @@ nav_order: 1
 
 Product codename: `momentum`.
 
-[Firmware](https://github.com/scalpelspace/momentum) | [Driver](https://github.com/scalpelspace/momentum_driver) | [Arduino Library](https://github.com/scalpelspace/scalpelspace_momentum)
+[Firmware](https://github.com/scalpelspace/momentum) | [Driver (SPI/CAN)](https://github.com/scalpelspace/momentum_driver) | [Arduino Library (SPI)](https://github.com/scalpelspace/scalpelspace_momentum) | [Arduino Library (CAN)](https://github.com/scalpelspace/scalpelspace_bus)
 
 ---
 

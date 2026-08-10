@@ -9,6 +9,8 @@ nav_order: 2
 
 Product codename: `can_hat_mini`.
 
+[Arduino Library (CAN)](https://github.com/scalpelspace/scalpelspace_bus)
+
 ---
 
 A small-footprint, breadboard-friendly breakout board that bridges an SPI host
@@ -41,4 +43,8 @@ an integrated controller.
 3. Set bus termination on (`120` mark) or (`NC` mark) off depending on where the
    board sits on the bus (enable 120 Ohm only at the physical ends of the bus).
 4. Connect the 3-pin CAN side to your bus (`GND`, CAN high, CAN low).
-5. Flash the example firmware and confirm the link.
+5. Flash the example firmware or and confirm the link.
+6. Optional: For larger projects using ScalpelSpace products, use
+   the [ScalpelSpace Bus](https://github.com/scalpelspace/scalpelspace_bus)
+   Arduino Library for ScalpelSpace's unified CAN ID allocation scheme and
+   device control.

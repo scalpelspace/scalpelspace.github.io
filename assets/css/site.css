@@ -426,6 +426,7 @@ main {
 /* One rule per tag. "All" needs none: nothing is hidden. */
 .filter-scope:has(#tag-sensing:checked) .product:not([data-tags~="sensing"]),
 .filter-scope:has(#tag-controller:checked) .product:not([data-tags~="controller"]),
+.filter-scope:has(#tag-tools:checked) .product:not([data-tags~="tools"]),
 .filter-scope:has(#tag-can:checked) .product:not([data-tags~="can"]),
 .filter-scope:has(#tag-arduino:checked) .product:not([data-tags~="arduino"]),
 .filter-scope:has(#tag-rpi:checked) .product:not([data-tags~="rpi"]) {

@@ -70,6 +70,9 @@
         <input type="radio" name="product-tag" id="tag-controller">Controller
       </label>
       <label class="chip">
+        <input type="radio" name="product-tag" id="tag-tools">tools
+      </label>
+      <label class="chip">
         <input type="radio" name="product-tag" id="tag-can">CAN bus
       </label>
       <label class="chip">
@@ -144,6 +147,26 @@
       </div>
     </section>
 
+    <section class="product" data-tags="tools">
+      <div>
+        <h2>Blasher</h2>
+        <p class="codename"><code>blasher</code></p>
+        <ul class="tags">
+          <li>tools</li>
+        </ul>
+      </div>
+      <div>
+        <p class="summary">
+          👀 In development!
+        </p>
+        <div class="links">
+          <a class="btn"
+             href="https://docs.scalpelspace.com/products/blasher/">Documentation</a>
+          <a class="btn" href="https://github.com/scalpelspace/pyblasher">Software</a>
+        </div>
+      </div>
+    </section>
+
     <section class="product" data-tags="can arduino">
       <div>
         <h2>SPI-CAN Breakout</h2>
@@ -214,28 +237,15 @@
 
   <section class="section">
     <div class="container">
-      <h2 class="section-title">Libraries and drivers</h2>
+      <h2 class="section-title">Universal libraries, drivers and software</h2>
       <div class="repos">
         <a class="repo" href="https://github.com/scalpelspace/scalpelspace_bus">
           <span class="repo-name">scalpelspace_bus</span>
           <p>Unified ScalpelSpace CAN bus Arduino library via the MCP2518FD.</p>
         </a>
-        <a class="repo"
-           href="https://github.com/scalpelspace/scalpelspace_momentum">
-          <span class="repo-name">scalpelspace_momentum</span>
-          <p>Arduino library for SPI communication with the Momentum board.</p>
-        </a>
-        <a class="repo" href="https://github.com/scalpelspace/momentum_driver">
-          <span class="repo-name">momentum_driver</span>
-          <p>Low level communication drivers for the Momentum sensor board.</p>
-        </a>
         <a class="repo" href="https://github.com/scalpelspace/can_driver">
           <span class="repo-name">can_driver</span>
           <p>Low level, simplified CAN bus communication drivers.</p>
-        </a>
-        <a class="repo" href="https://github.com/scalpelspace/momentum">
-          <span class="repo-name">momentum</span>
-          <p>Firmware for the Momentum sensor board.</p>
         </a>
         <a class="repo" href="https://github.com/scalpelspace/pyblasher">
           <span class="repo-name">pyblasher</span>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products &middot; ScalpelSpace</title>
+  <meta name="description"
+        content="Momentum sensor shield, SPI-CAN breakout, and SPI-CAN 40-pin hat, with the open drivers and libraries that support them.">
+  <link rel="canonical" href="https://scalpelspace.com/products.html">
+  <link rel="icon" href="/assets/img/favicon-512x512.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon-512x512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ScalpelSpace">
+  <meta property="og:title" content="Products &middot; ScalpelSpace">
+  <meta property="og:description"
+        content="Momentum sensor shield, SPI-CAN breakout, and SPI-CAN 40-pin hat.">
+  <meta property="og:url" content="https://scalpelspace.com/products.html">
+  <meta property="og:image"
+        content="https://scalpelspace.com/assets/img/favicon-512x512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ScalpelSpace">
+  <meta name="theme-color" content="#ffffff"
+        media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0c10"
+        media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">
+      <img src="/assets/img/favicon-512x512.png" alt="" width="28" height="28">
+      ScalpelSpace
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/products.html" aria-current="page">Products</a>
+      <a href="/about.html">About</a>
+      <a class="ext" href="https://docs.scalpelspace.com/">Docs</a>
+      <a class="ext" href="https://shop.scalpelspace.com/">Shop</a>
+      <a class="ext" href="https://github.com/scalpelspace">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <h1>Products</h1>
+      <p class="lede">
+        Small, focused boards that drop a full sensor suite or a CAN bus
+        interface into an existing project. Every board is documented in full
+        on the <a href="https://docs.scalpelspace.com/products/">docs site</a>
+        and sold through the <a href="https://shop.scalpelspace.com/">shop</a>.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <section class="product">
+      <div>
+        <h2>Momentum</h2>
+        <p class="codename"><code>momentum</code></p>
+      </div>
+      <div>
+        <p class="summary">
+          A Uno-style footprint sensor shield that bridges an SPI or CAN host
+          to sensor telemetry, combining a 9-DOF IMU, multi-constellation
+          GNSS, and a barometric pressure sensor on a single board.
+        </p>
+        <ul>
+          <li><strong>9-DOF IMU</strong> via the BNO086.</li>
+          <li><strong>Multi-constellation GNSS</strong> via the SAM-M10Q.</li>
+          <li><strong>24-bit barometric pressure</strong> via the BMP390.</li>
+          <li><strong>SPI or Classic CAN</strong> host interface.</li>
+          <li>Firmware updates over <strong>USB-C</strong> via the CP2102N.</li>
+          <li>Jumper selectable 5 V or 3.3 V SPI logic level.</li>
+        </ul>
+        <div class="links">
+          <a class="btn btn-primary"
+             href="https://shop.scalpelspace.com/">Buy</a>
+          <a class="btn"
+             href="https://docs.scalpelspace.com/products/momentum/">Documentation</a>
+          <a class="btn" href="https://github.com/scalpelspace/momentum">Firmware</a>
+          <a class="btn"
+             href="https://github.com/scalpelspace/scalpelspace_momentum">Arduino
+            library (SPI)</a>
+          <a class="btn"
+             href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
+            library (CAN)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="product">
+      <div>
+        <h2>SPI-CAN Breakout</h2>
+        <p class="codename"><code>can_hat_mini</code></p>
+      </div>
+      <div>
+        <p class="summary">
+          A small-footprint, breadboard-friendly breakout that bridges an SPI
+          host to a CAN bus, letting any microcontroller with SPI talk CAN
+          without an integrated controller.
+        </p>
+        <ul>
+          <li>Classic CAN and <strong>CAN FD</strong> via the MCP2518FD.</li>
+          <li>Miniature <strong>breadboard-compatible</strong> footprint.</li>
+          <li>Switch selectable <strong>bus termination</strong>.</li>
+          <li>Jumper selectable 5 V or 3.3 V logic level.</li>
+          <li>Jumper selectable <strong>silent mode</strong> for bus monitoring.
+          </li>
+        </ul>
+        <div class="links">
+          <a class="btn btn-primary"
+             href="https://shop.scalpelspace.com/">Buy</a>
+          <a class="btn"
+             href="https://docs.scalpelspace.com/products/can_hat_mini/">Documentation</a>
+          <a class="btn"
+             href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
+            library (CAN)</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="product">
+      <div>
+        <h2>SPI-CAN 40-pin Hat</h2>
+        <p class="codename"><code>can_hat_40</code></p>
+      </div>
+      <div>
+        <p class="summary">
+          A 40-pin GPIO hat that adds a CAN bus interface to single-board
+          computers such as the Raspberry Pi series. It seats directly on the
+          standard header and bridges the host SPI bus to a CAN transceiver.
+        </p>
+        <ul>
+          <li>Standard <strong>40-pin (2x20) GPIO header</strong>.</li>
+          <li>Classic CAN and <strong>CAN FD</strong> via the MCP2518FD.</li>
+          <li>Switch selectable <strong>bus termination</strong>.</li>
+          <li>Jumper selectable <strong>silent mode</strong> for bus monitoring.
+          </li>
+          <li>Fixed 3.3 V logic.</li>
+        </ul>
+        <div class="links">
+          <a class="btn btn-primary"
+             href="https://shop.scalpelspace.com/">Buy</a>
+          <a class="btn"
+             href="https://docs.scalpelspace.com/products/can_hat_40/">Documentation</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Libraries and drivers</h2>
+      <div class="repos">
+        <a class="repo" href="https://github.com/scalpelspace/scalpelspace_bus">
+          <span class="repo-name">scalpelspace_bus</span>
+          <p>Unified ScalpelSpace CAN bus Arduino library via the MCP2518FD.</p>
+        </a>
+        <a class="repo"
+           href="https://github.com/scalpelspace/scalpelspace_momentum">
+          <span class="repo-name">scalpelspace_momentum</span>
+          <p>Arduino library for SPI communication with the Momentum board.</p>
+        </a>
+        <a class="repo" href="https://github.com/scalpelspace/momentum_driver">
+          <span class="repo-name">momentum_driver</span>
+          <p>Low level communication drivers for the Momentum sensor board.</p>
+        </a>
+        <a class="repo" href="https://github.com/scalpelspace/can_driver">
+          <span class="repo-name">can_driver</span>
+          <p>Low level, simplified CAN bus communication drivers.</p>
+        </a>
+        <a class="repo" href="https://github.com/scalpelspace/momentum">
+          <span class="repo-name">momentum</span>
+          <p>Firmware for the Momentum sensor board.</p>
+        </a>
+        <a class="repo" href="https://github.com/scalpelspace/pyblasher">
+          <span class="repo-name">pyblasher</span>
+          <p>Python based firmware flashing and utility tool.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 ScalpelSpace</span>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/products.html">Products</a>
+      <a href="/about.html">About</a>
+      <a href="https://docs.scalpelspace.com/">Docs</a>
+      <a href="https://shop.scalpelspace.com/">Shop</a>
+      <a href="https://github.com/scalpelspace">GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

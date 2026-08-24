@@ -70,7 +70,7 @@
         <input type="radio" name="product-tag" id="tag-controller">Controller
       </label>
       <label class="chip">
-        <input type="radio" name="product-tag" id="tag-tools">tools
+        <input type="radio" name="product-tag" id="tag-tools">Tools
       </label>
       <label class="chip">
         <input type="radio" name="product-tag" id="tag-can">CAN bus
@@ -118,7 +118,7 @@
             library (SPI)</a>
           <a class="btn"
              href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (CAN)</a>
+            library (ScalpelSpace Bus)</a>
         </div>
       </div>
     </section>
@@ -134,15 +134,41 @@
       </div>
       <div>
         <p class="summary">
-          👀 In development!
+          A closed loop stepper controller in a NEMA 17 face plate footprint.
+          An AS5047P magnetic encoder sits alone on the underside of the board
+          to read a diametric magnet on the output shaft, letting the controller
+          close an absolute PID position loop on true shaft angle rather than
+          counting steps open loop.
         </p>
+        <ul>
+          <li><strong>Absolute PID position control</strong> closed on the
+            AS5047P magnetic rotary encoder.
+          </li>
+          <li><strong>NEMA 17 face plate</strong> outline, mounting directly to
+            the motor.
+          </li>
+          <li><strong>Classic CAN</strong> command and telemetry for reliable
+            scalablilty.
+          </li>
+          <li><strong>TMC2209</strong> bipolar driver with configurable run and
+            hold currents.
+          </li>
+          <li><strong>StallGuard stall detection</strong> and driver status
+            reported over the bus.
+          </li>
+          <li>PID gains, acceleration and velocity limits, and step size all
+            tunable at runtime.
+          </li>
+        </ul>
         <div class="links">
+          <a class="btn btn-primary"
+             href="">Coming soon to shop!</a>
           <a class="btn"
              href="https://docs.scalpelspace.com/products/mc_stepper/">Documentation</a>
           <a class="btn" href="https://github.com/scalpelspace/mc_stepper">Firmware</a>
           <a class="btn"
              href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (CAN)</a>
+            library (ScalpelSpace Bus)</a>
         </div>
       </div>
     </section>
@@ -152,7 +178,7 @@
         <h2>Blasher</h2>
         <p class="codename"><code>blasher</code></p>
         <ul class="tags">
-          <li>tools</li>
+          <li>Tools</li>
         </ul>
       </div>
       <div>
@@ -160,6 +186,8 @@
           👀 In development!
         </p>
         <div class="links">
+          <a class="btn btn-primary"
+             href="">Coming soon to shop!</a>
           <a class="btn"
              href="https://docs.scalpelspace.com/products/blasher/">Documentation</a>
           <a class="btn" href="https://github.com/scalpelspace/pyblasher">Software</a>
@@ -197,7 +225,7 @@
              href="https://docs.scalpelspace.com/products/can_hat_mini/">Documentation</a>
           <a class="btn"
              href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (CAN)</a>
+            library (ScalpelSpace Bus)</a>
         </div>
       </div>
     </section>

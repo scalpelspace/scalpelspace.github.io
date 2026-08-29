@@ -549,8 +549,10 @@ main {
   outline-offset: 3px;
 }
 
+/* Same gradient-over-transparent-border case as .btn-primary. */
 .chip:has(:checked) {
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  background-origin: border-box;
   border-color: transparent;
   color: #ffffff;
 }
@@ -665,8 +667,17 @@ main {
   text-decoration: none;
 }
 
+/*
+ * background-origin must follow the background shorthand, which resets it.
+ * Without it the gradient is sized to the padding box but painted out to the
+ * border box, so the transparent 1px border ring gets the gradient's clamped
+ * edge colour instead of a continuation of it. That reads as a second, offset
+ * layer around the fill, worst on high DPR screens where the border snaps to a
+ * fraction of a device pixel.
+ */
 .btn-primary {
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  background-origin: border-box;
   border-color: transparent;
   color: #ffffff;
 }

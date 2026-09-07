@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Products &middot; ScalpelSpace</title>
   <meta name="description"
-        content="Momentum sensor shield, SPI-CAN breakout, and SPI-CAN 40-pin hat, with the open drivers and libraries that support them.">
+        content="Momentum sensor shield, stepper controller, SPI-CAN breakout and 40-pin hat, with the open drivers and libraries that support them.">
   <link rel="canonical" href="https://scalpelspace.com/products.html">
   <link rel="icon" href="/assets/img/favicon-512x512.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/favicon-512x512.png">
@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="ScalpelSpace">
   <meta property="og:title" content="Products &middot; ScalpelSpace">
   <meta property="og:description"
-        content="Momentum sensor shield, SPI-CAN breakout, and SPI-CAN 40-pin hat.">
+        content="Momentum sensor shield, stepper controller, SPI-CAN breakout and 40-pin hat.">
   <meta property="og:url" content="https://scalpelspace.com/products.html">
   <meta property="og:image"
         content="https://scalpelspace.com/assets/img/favicon-512x512.png">
@@ -24,6 +24,7 @@
   <meta name="theme-color" content="#0c0c10"
         media="(prefers-color-scheme: dark)">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -59,6 +60,22 @@
   </section>
 
   <div class="container filter-scope">
+    <form class="product-search" role="search" onsubmit="return false;">
+      <label class="sr-only" for="product-search-input">Search products</label>
+      <span class="search-field">
+        <svg class="search-icon" viewBox="0 0 16 16" fill="none"
+             stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.5"></circle>
+          <path d="M10.5 10.5 L14.5 14.5" stroke-linecap="round"></path>
+        </svg>
+        <input id="product-search-input" type="search" autocomplete="off"
+               placeholder="Search products, codenames, or parts">
+        <button class="search-clear" type="button"
+                aria-label="Clear search">&times;</button>
+      </span>
+      <p class="search-status" role="status" aria-live="polite"></p>
+    </form>
+
     <fieldset class="filter">
       <legend class="sr-only">Filter products by tag</legend>
       <label class="chip">
@@ -84,184 +101,113 @@
       </label>
     </fieldset>
 
-    <section class="product" data-tags="sensing can arduino">
-      <div>
-        <h2>Momentum</h2>
+    <div class="product-grid">
+      <article class="product-card" data-tags="sensing can arduino"
+               data-keywords="BNO086 SAM-M10Q BMP390 CP2102N IMU GNSS GPS barometer barometric pressure shield uno telemetry SPI">
+        <h2><a href="/products/momentum/">Momentum</a></h2>
         <p class="codename"><code>momentum</code></p>
         <ul class="tags">
           <li>Sensing</li>
           <li>CAN bus</li>
           <li>Arduino</li>
         </ul>
-      </div>
-      <div>
         <p class="summary">
-          A Uno-style footprint sensor shield that bridges an SPI or CAN host
-          to sensor telemetry, combining a 9-DOF IMU, multi-constellation
-          GNSS, and a barometric pressure sensor on a single board.
+          A Uno-style footprint sensor shield combining a 9-DOF IMU,
+          multi-constellation GNSS, and a barometric pressure sensor, bridged
+          to an SPI or CAN host.
         </p>
-        <ul>
-          <li><strong>9-DOF IMU</strong> via the BNO086.</li>
-          <li><strong>Multi-constellation GNSS</strong> via the SAM-M10Q.</li>
-          <li><strong>24-bit barometric pressure</strong> via the BMP390.</li>
-          <li><strong>SPI or Classic CAN</strong> host interface.</li>
-          <li>Firmware updates over <strong>USB-C</strong> via the CP2102N.</li>
-          <li>Jumper selectable 5 V or 3.3 V SPI logic level.</li>
-        </ul>
         <div class="links">
-          <a class="btn btn-primary"
+          <a class="btn btn-primary" href="/products/momentum/">View product</a>
+          <a class="btn"
              href="https://shop.scalpelspace.com/products/momentum-dev-board">Buy</a>
-          <a class="btn"
-             href="https://docs.scalpelspace.com/products/momentum/">Documentation</a>
-          <a class="btn" href="https://github.com/scalpelspace/momentum">Firmware</a>
-          <a class="btn"
-             href="https://github.com/scalpelspace/scalpelspace_momentum">Arduino
-            library (SPI)</a>
-          <a class="btn"
-             href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (ScalpelSpace Bus)</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="product" data-tags="controller can">
-      <div>
-        <h2>Stepper Controller</h2>
+      <article class="product-card" data-tags="controller can"
+               data-keywords="AS5047P TMC2209 NEMA 17 stepper motor PID encoder position closed loop stall detection StallGuard diametric magnet">
+        <h2><a href="/products/mc_stepper/">Stepper Controller</a></h2>
         <p class="codename"><code>mc_stepper</code></p>
         <ul class="tags">
           <li>Controller</li>
           <li>CAN bus</li>
         </ul>
-      </div>
-      <div>
         <p class="summary">
-          A closed loop stepper controller in a NEMA 17 face plate footprint.
-          An AS5047P magnetic encoder sits alone on the underside of the board
-          to read a diametric magnet on the output shaft, letting the controller
-          close an absolute PID position loop on true shaft angle rather than
+          A closed loop stepper controller in a NEMA 17 face plate footprint,
+          closing an absolute PID position loop on true shaft angle rather than
           counting steps open loop.
         </p>
-        <ul>
-          <li><strong>Absolute PID position control</strong> closed on the
-            AS5047P magnetic rotary encoder.
-          </li>
-          <li><strong>NEMA 17 face plate</strong> outline, mounting directly to
-            the motor.
-          </li>
-          <li><strong>Classic CAN</strong> command and telemetry for reliable
-            scalablilty.
-          </li>
-          <li><strong>TMC2209</strong> bipolar driver with configurable run and
-            hold currents.
-          </li>
-          <li><strong>Stall detection</strong> and driver status via the TMC2209
-            reported over the bus.
-          </li>
-          <li>PID gains, acceleration and velocity limits, and step size all
-            tunable at runtime.
-          </li>
-        </ul>
+        <p class="status-note">In development</p>
         <div class="links">
-          <a class="btn btn-primary"
-             href="">Coming soon to shop!</a>
-          <a class="btn"
-             href="https://docs.scalpelspace.com/products/mc_stepper/">Documentation</a>
-          <a class="btn" href="https://github.com/scalpelspace/mc_stepper">Firmware</a>
-          <a class="btn"
-             href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (ScalpelSpace Bus)</a>
+          <a class="btn btn-primary" href="/products/mc_stepper/">View
+            product</a>
+          <a class="btn" href="https://shop.scalpelspace.com/">Coming soon!</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="product" data-tags="tools">
-      <div>
-        <h2>Blasher</h2>
+      <article class="product-card" data-tags="tools"
+               data-keywords="firmware flashing flasher web serial browser tool utility STM32">
+        <h2><a href="/products/blasher/">Blasher</a></h2>
         <p class="codename"><code>blasher</code></p>
         <ul class="tags">
           <li>Tools</li>
         </ul>
-      </div>
-      <div>
         <p class="summary">
-          👀 In development!
+          A browser based firmware flashing and utility tool for ScalpelSpace
+          STM32 boards, talking to hardware over Web Serial with nothing to
+          install.
         </p>
         <div class="links">
-          <a class="btn btn-primary"
-             href="">Coming soon to shop!</a>
-          <a class="btn"
-             href="https://docs.scalpelspace.com/products/blasher/">Documentation</a>
-          <a class="btn" href="https://blasher.scalpelspace.com">Web App</a>
+          <a class="btn btn-primary" href="/products/blasher/">View product</a>
+          <a class="btn" href="https://shop.scalpelspace.com/">Coming soon!</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="product" data-tags="can arduino">
-      <div>
-        <h2>SPI-CAN Breakout</h2>
+      <article class="product-card" data-tags="can arduino"
+               data-keywords="MCP2518FD CAN FD breakout breadboard termination silent listen only transceiver SPI">
+        <h2><a href="/products/can_hat_mini/">SPI-CAN Breakout</a></h2>
         <p class="codename"><code>can_hat_mini</code></p>
         <ul class="tags">
           <li>CAN bus</li>
           <li>Arduino</li>
         </ul>
-      </div>
-      <div>
         <p class="summary">
           A small-footprint, breadboard-friendly breakout that bridges an SPI
-          host to a CAN bus, letting any microcontroller with SPI talk CAN
-          without an integrated controller.
+          host to a CAN bus, letting any microcontroller with SPI talk CAN.
         </p>
-        <ul>
-          <li>Classic CAN and <strong>CAN FD</strong> via the MCP2518FD.</li>
-          <li>Miniature <strong>breadboard-compatible</strong> footprint.</li>
-          <li>Switch selectable <strong>bus termination</strong>.</li>
-          <li>Jumper selectable 5 V or 3.3 V logic level.</li>
-          <li>Jumper selectable <strong>silent mode</strong> for bus monitoring.
-          </li>
-        </ul>
         <div class="links">
-          <a class="btn btn-primary"
+          <a class="btn btn-primary" href="/products/can_hat_mini/">View
+            product</a>
+          <a class="btn"
              href="https://shop.scalpelspace.com/products/spi-can-breakout">Buy</a>
-          <a class="btn"
-             href="https://docs.scalpelspace.com/products/can_hat_mini/">Documentation</a>
-          <a class="btn"
-             href="https://github.com/scalpelspace/scalpelspace_bus">Arduino
-            library (ScalpelSpace Bus)</a>
         </div>
-      </div>
-    </section>
+      </article>
 
-    <section class="product" data-tags="can rpi">
-      <div>
-        <h2>SPI-CAN 40-pin Hat</h2>
+      <article class="product-card" data-tags="can rpi"
+               data-keywords="MCP2518FD CAN FD Raspberry Pi 40-pin GPIO header hat single board computer SBC termination silent">
+        <h2><a href="/products/can_hat_40/">SPI-CAN 40-pin Hat</a></h2>
         <p class="codename"><code>can_hat_40</code></p>
         <ul class="tags">
           <li>CAN bus</li>
           <li>Raspberry Pi</li>
         </ul>
-      </div>
-      <div>
         <p class="summary">
           A 40-pin GPIO hat that adds a CAN bus interface to single-board
-          computers such as the Raspberry Pi series. It seats directly on the
-          standard header and bridges the host SPI bus to a CAN transceiver.
+          computers such as the Raspberry Pi series, seating directly on the
+          standard header.
         </p>
-        <ul>
-          <li>Standard <strong>40-pin (2x20) GPIO header</strong>.</li>
-          <li>Classic CAN and <strong>CAN FD</strong> via the MCP2518FD.</li>
-          <li>Switch selectable <strong>bus termination</strong>.</li>
-          <li>Jumper selectable <strong>silent mode</strong> for bus monitoring.
-          </li>
-          <li>Fixed 3.3 V logic.</li>
-        </ul>
         <div class="links">
-          <a class="btn btn-primary"
-             href="https://shop.scalpelspace.com/products/can-bus-hat-40-pin">Buy</a>
+          <a class="btn btn-primary" href="/products/can_hat_40/">View
+            product</a>
           <a class="btn"
-             href="https://docs.scalpelspace.com/products/can_hat_40/">Documentation</a>
+             href="https://shop.scalpelspace.com/products/can-bus-hat-40-pin">Buy</a>
         </div>
-      </div>
-    </section>
+      </article>
+    </div>
+
+    <p class="no-results">
+      No products match that search. Try a board name, a codename such as
+      <code>can_hat_40</code>, or a part number such as <code>MCP2518FD</code>.
+    </p>
   </div>
 
   <section class="section">
@@ -298,5 +244,52 @@
     </nav>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var input = document.getElementById('product-search-input');
+    var clear = document.querySelector('.search-clear');
+    var status = document.querySelector('.search-status');
+    var empty = document.querySelector('.no-results');
+    var cards = Array.prototype.slice.call(
+      document.querySelectorAll('.product-card'));
+
+    // Name, codename, tags and summary all live in the card's text; the
+    // keyword list adds part numbers that only appear on the detail page.
+    var haystacks = cards.map(function (card) {
+      return (card.textContent + ' ' + (card.dataset.keywords || ''))
+        .toLowerCase().replace(/\s+/g, ' ');
+    });
+
+    function apply() {
+      var q = input.value.trim().toLowerCase();
+      var terms = q ? q.split(/\s+/) : [];
+      var shown = 0;
+
+      cards.forEach(function (card, i) {
+        var hit = terms.every(function (t) {
+          return haystacks[i].indexOf(t) !== -1;
+        });
+        card.classList.toggle('is-search-hidden', !hit);
+        if (hit) shown++;
+      });
+
+      clear.classList.toggle('is-visible', q !== '');
+      empty.classList.toggle('is-visible', shown === 0);
+      status.textContent = q === ''
+        ? ''
+        : shown + (shown === 1 ? ' product' : ' products') + ' matching "'
+        + input.value.trim() + '"';
+    }
+
+    input.addEventListener('input', apply);
+    clear.addEventListener('click', function () {
+      input.value = '';
+      apply();
+      input.focus();
+    });
+    apply();
+  })();
+</script>
 </body>
 </html>

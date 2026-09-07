@@ -558,12 +558,21 @@ main {
 }
 
 /* One rule per tag. "All" needs none: nothing is hidden. */
-.filter-scope:has(#tag-sensing:checked) .product:not([data-tags~="sensing"]),
-.filter-scope:has(#tag-controller:checked) .product:not([data-tags~="controller"]),
-.filter-scope:has(#tag-tools:checked) .product:not([data-tags~="tools"]),
-.filter-scope:has(#tag-can:checked) .product:not([data-tags~="can"]),
-.filter-scope:has(#tag-arduino:checked) .product:not([data-tags~="arduino"]),
-.filter-scope:has(#tag-rpi:checked) .product:not([data-tags~="rpi"]) {
+.filter-scope:has(#tag-sensing:checked) .product-card:not([data-tags~="sensing"]),
+.filter-scope:has(#tag-controller:checked) .product-card:not([data-tags~="controller"]),
+.filter-scope:has(#tag-tools:checked) .product-card:not([data-tags~="tools"]),
+.filter-scope:has(#tag-can:checked) .product-card:not([data-tags~="can"]),
+.filter-scope:has(#tag-arduino:checked) .product-card:not([data-tags~="arduino"]),
+.filter-scope:has(#tag-rpi:checked) .product-card:not([data-tags~="rpi"]) {
+  display: none;
+}
+
+/*
+ * Search hides cards independently of the tag filter. Both are stylesheet
+ * rules, so a card hidden by either stays hidden: the script only toggles a
+ * class and never writes an inline style, which would outrank the tag rules.
+ */
+.product-card.is-search-hidden {
   display: none;
 }
 
@@ -574,32 +583,172 @@ main {
   }
 }
 
-/* --- Product list ------------------------------------------------------- */
+/* --- Product search ----------------------------------------------------- */
 
 /*
- * Every product carries a top border, including the first: it doubles as the
- * rule beneath the filter bar. Exempting the first item would break under
- * filtering, since :first-of-type still counts hidden siblings.
+ * Free text search is the one thing on this site that genuinely needs
+ * JavaScript, so the field stays hidden until the script adds .js to <html>.
+ * Without it there is no dead input, and the tag filter still works.
  */
-.product {
-  padding: 32px 0;
-  border-top: 1px solid var(--border);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 12px 48px;
-  align-items: start;
+.product-search {
+  display: none;
+  margin-top: 20px;
 }
 
-.product .tags {
+.js .product-search {
+  display: block;
+}
+
+.search-field {
+  position: relative;
+  display: block;
+}
+
+.search-field input {
+  width: 100%;
+  padding: 12px 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-field input::placeholder {
+  color: var(--text-faint);
+}
+
+.search-field input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.search-field .search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--text-faint);
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  padding: 6px 9px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--text-faint);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.search-clear:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.search-clear.is-visible {
+  display: block;
+}
+
+.search-status {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+.no-results {
+  display: none;
+  padding: 40px 0 8px;
+  color: var(--text-muted);
+}
+
+.no-results.is-visible {
+  display: block;
+}
+
+/* --- Product grid ------------------------------------------------------- */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 20px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.15s ease;
+}
+
+.product-card:hover {
+  border-color: var(--border-strong);
+}
+
+.product-card h2 {
+  font-size: 1.1875rem;
+}
+
+.product-card h2 a {
+  color: var(--text);
+}
+
+.product-card h2 a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Pushes each card's link row to the bottom so buttons align across a row. */
+.product-card .summary {
+  flex: 1 1 auto;
+  margin-top: 10px;
+  font-size: 0.9375rem;
+}
+
+.product-card .links {
+  margin-top: 18px;
+}
+
+/* --- Shared product pieces (grid cards and detail pages) ---------------- */
+
+.codename {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+}
+
+.summary {
+  color: var(--text-muted);
+}
+
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   list-style: none;
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   padding: 0;
 }
 
-.product .tags li {
+.tags li {
   margin: 0;
   padding: 2px 10px;
   border: 1px solid var(--border);
@@ -609,35 +758,55 @@ main {
   color: var(--text-faint);
 }
 
-.product h2 {
-  font-size: 1.375rem;
-}
-
-.product .codename {
-  margin-top: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--text-faint);
-}
-
-.product .summary {
-  color: var(--text-muted);
-}
-
-.product ul {
-  margin: 14px 0 0;
+.feature-list {
+  margin: 18px 0 0;
   padding-left: 18px;
   color: var(--text-muted);
   font-size: 0.9375rem;
 }
 
-.product li {
-  margin-bottom: 5px;
+.feature-list li {
+  margin-bottom: 6px;
 }
 
-.product li strong {
+.feature-list li strong {
   color: var(--text);
   font-weight: 600;
+}
+
+.status-note {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 3px 11px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-faint);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.product-detail {
+  max-width: 68ch;
+}
+
+.product-detail .summary {
+  font-size: 1.0625rem;
+}
+
+.product-detail .links {
+  margin-top: 26px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.back-link:hover {
+  color: var(--text);
+  text-decoration: none;
 }
 
 .links {
@@ -857,11 +1026,6 @@ main {
 /* --- Responsive --------------------------------------------------------- */
 
 @media (max-width: 720px) {
-  .product {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-
   /* Let the header scroll away rather than pin a two-row bar to the top. */
   .site-header {
     position: static;

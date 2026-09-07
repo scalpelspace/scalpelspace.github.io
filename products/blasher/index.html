@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blasher &middot; ScalpelSpace</title>
   <meta name="description"
-        content="A browser based firmware flashing and utility tool for ScalpelSpace STM32 boards, talking to hardware over Web Serial with nothing to install.">
+        content="A USB to serial adapter for ScalpelSpace STM32 boards, paired with the Blasher web app to flash and inspect boards from the browser.">
   <link rel="canonical" href="https://scalpelspace.com/products/blasher/">
   <link rel="icon" href="/assets/img/favicon-512x512.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/favicon-512x512.png">
@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="ScalpelSpace">
   <meta property="og:title" content="Blasher &middot; ScalpelSpace">
   <meta property="og:description"
-        content="A browser based firmware flashing and utility tool for ScalpelSpace STM32 boards, talking to hardware over Web Serial with nothing to install.">
+        content="A USB to serial adapter for ScalpelSpace STM32 boards, paired with the Blasher web app to flash and inspect boards from the browser.">
   <meta property="og:url" content="https://scalpelspace.com/products/blasher/">
   <meta property="og:image"
         content="https://scalpelspace.com/assets/img/favicon-512x512.png">
@@ -52,7 +52,7 @@
       <h1>Blasher</h1>
       <p class="codename"><code>blasher</code></p>
       <ul class="tags">
-        <li>Tools</li>
+        <li data-tag="tools">Tools</li>
       </ul>
     </div>
   </section>
@@ -61,19 +61,23 @@
     <div class="container">
       <div class="product-detail">
         <p class="summary">
-          A browser based firmware flashing and utility tool for ScalpelSpace
-          STM32 boards. It talks to hardware directly over Web Serial, so there
-          is nothing to install and no toolchain to set up.
+          A USB to serial adapter for ScalpelSpace STM32 boards. Paired with
+          the Blasher web app it flashes and inspects boards directly from the
+          browser over Web Serial, with no toolchain to install.
         </p>
         <ul class="feature-list">
-          <li><strong>Runs in the browser</strong> over Web Serial, with no
-            install and no local Python environment.
+          <li><strong>USB to serial bridge</strong> between a host computer and
+            ScalpelSpace STM32 boards.
+          </li>
+          <li><strong>Flashing and utilities in the browser</strong> through the
+            Blasher web app, with nothing to install locally.
+          </li>
+          <li><strong>Web Serial</strong> based, so the app needs a Chromium
+            browser and an HTTPS connection.
           </li>
           <li><strong>One tool across the range</strong>, replacing the
             per-board flashing scripts that came before it.
           </li>
-          <li>Supported on ScalpelSpace <strong>STM32</strong> boards.</li>
-          <li>Served over HTTPS, which Web Serial requires.</li>
         </ul>
         <div class="links">
           <a class="btn btn-primary"

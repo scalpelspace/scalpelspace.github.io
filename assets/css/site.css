@@ -11,7 +11,9 @@
   --bg-header: rgba(255, 255, 255, 0.8);
   --text: #16161a;
   --text-muted: #5c5c66;
-  --text-faint: #85858f;
+  /* Darkened from #85858f, which only reached 3.5:1 on cards. This token is
+     used at 12-13px (tags, codenames, captions), so it needs AA at 4.5:1. */
+  --text-faint: #6e6e78;
   --border: #e4e4e9;
   --border-strong: #d0d0d8;
   --accent: #7a00d4;
@@ -37,7 +39,8 @@
     --bg-header: rgba(12, 12, 16, 0.8);
     --text: #f2f2f5;
     --text-muted: #a0a0ad;
-    --text-faint: #77777f;
+    /* Lightened from #77777f, which only reached 4.13:1 on cards. */
+    --text-faint: #8a8a95;
     --border: #26262e;
     --border-strong: #35353f;
     --accent: #b46bff;
@@ -513,7 +516,19 @@ main {
   min-width: 0; /* Fieldsets default to min-content, which can overflow. */
 }
 
+/*
+ * Chips carry the same --tag-h hues as the tags they filter, so a chip and
+ * the tag it matches read as the same colour. "All" is not a tag, so it keeps
+ * the neutral treatment and the brand gradient when selected.
+ */
+/*
+ * Chips are neutral at rest and take their tag's hue only once selected, so
+ * the filter bar stays calm and the chosen filter is unmistakable. --tag-h is
+ * declared here but unused until :checked; the neutral state uses the shared
+ * tokens, which already adapt per theme, so no dark-mode override is needed.
+ */
 .chip {
+  --tag-h: 250;
   display: inline-flex;
   align-items: center;
   padding: 7px 15px;
@@ -528,6 +543,30 @@ main {
   -webkit-user-select: none;
   user-select: none;
   transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.chip[data-tag="sensing"] {
+  --tag-h: 190;
+}
+
+.chip[data-tag="controller"] {
+  --tag-h: 25;
+}
+
+.chip[data-tag="tools"] {
+  --tag-h: 150;
+}
+
+.chip[data-tag="can"] {
+  --tag-h: 220;
+}
+
+.chip[data-tag="arduino"] {
+  --tag-h: 275;
+}
+
+.chip[data-tag="rpi"] {
+  --tag-h: 330;
 }
 
 /* Kept in the accessibility tree and tab order, just not painted. */
@@ -549,8 +588,26 @@ main {
   outline-offset: 3px;
 }
 
-/* Same gradient-over-transparent-border case as .btn-primary. */
+/*
+ * Selected: the chip's own hue, filled, so it reads as chosen rather than
+ * merely tinted. One rule serves both themes deliberately. A lighter fill was
+ * tried for dark mode, but white text only reached 2.85:1 on green and 3.42:1
+ * on teal at 42% lightness; at 30% every hue clears AA (green is the floor at
+ * 5.32:1) and the fill is still brighter than the unchecked tint, so it reads
+ * as selected in dark too. Must follow .chip-all to win at equal specificity.
+ */
 .chip:has(:checked) {
+  background: hsl(var(--tag-h) 58% 30%);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+/*
+ * Placed after the dark block so the brand gradient wins in both themes:
+ * .chip:has(:checked) inside that block has equal specificity and would
+ * otherwise override it. Same background-origin fix as .btn-primary.
+ */
+.chip-all:has(:checked) {
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
   background-origin: border-box;
   border-color: transparent;
@@ -748,14 +805,56 @@ main {
   padding: 0;
 }
 
+/*
+ * Each tag gets its own hue so a category is recognisable at a glance across
+ * cards. Only the hue changes per tag: saturation and lightness stay fixed,
+ * which keeps the set reading as one family and keeps contrast predictable
+ * without hand-checking every colour.
+ */
 .tags li {
+  --tag-h: 250;
   margin: 0;
   padding: 2px 10px;
-  border: 1px solid var(--border);
+  border: 1px solid hsl(var(--tag-h) 45% 86%);
   border-radius: 999px;
+  background: hsl(var(--tag-h) 68% 96%);
+  /* 30% not 32%: green sits highest in luminance at a given lightness, and
+     only cleared AA by 0.09 at 32%. This gives every hue real margin. */
+  color: hsl(var(--tag-h) 58% 30%);
   font-size: 0.75rem;
-  font-weight: 550;
-  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.tags li[data-tag="sensing"] {
+  --tag-h: 190;
+}
+
+.tags li[data-tag="controller"] {
+  --tag-h: 25;
+}
+
+.tags li[data-tag="tools"] {
+  --tag-h: 150;
+}
+
+.tags li[data-tag="can"] {
+  --tag-h: 220;
+}
+
+.tags li[data-tag="arduino"] {
+  --tag-h: 275;
+}
+
+.tags li[data-tag="rpi"] {
+  --tag-h: 330;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tags li {
+    border-color: hsl(var(--tag-h) 28% 30%);
+    background: hsl(var(--tag-h) 38% 16%);
+    color: hsl(var(--tag-h) 68% 78%);
+  }
 }
 
 .feature-list {
@@ -776,6 +875,9 @@ main {
 
 .status-note {
   display: inline-block;
+  /* Inside a column flex card, inline-block is blockified and would stretch
+     the pill across the full width; this shrinks it back to its content. */
+  align-self: flex-start;
   margin-top: 12px;
   padding: 3px 11px;
   border: 1px dashed var(--border-strong);

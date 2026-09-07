@@ -78,25 +78,25 @@
 
     <fieldset class="filter">
       <legend class="sr-only">Filter products by tag</legend>
-      <label class="chip">
+      <label class="chip chip-all">
         <input type="radio" name="product-tag" id="tag-all" checked>All
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="sensing">
         <input type="radio" name="product-tag" id="tag-sensing">Sensing
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="controller">
         <input type="radio" name="product-tag" id="tag-controller">Controller
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="tools">
         <input type="radio" name="product-tag" id="tag-tools">Tools
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="can">
         <input type="radio" name="product-tag" id="tag-can">CAN bus
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="arduino">
         <input type="radio" name="product-tag" id="tag-arduino">Arduino
       </label>
-      <label class="chip">
+      <label class="chip" data-tag="rpi">
         <input type="radio" name="product-tag" id="tag-rpi">Raspberry Pi
       </label>
     </fieldset>
@@ -107,9 +107,9 @@
         <h2><a href="/products/momentum/">Momentum</a></h2>
         <p class="codename"><code>momentum</code></p>
         <ul class="tags">
-          <li>Sensing</li>
-          <li>CAN bus</li>
-          <li>Arduino</li>
+          <li data-tag="sensing">Sensing</li>
+          <li data-tag="can">CAN bus</li>
+          <li data-tag="arduino">Arduino</li>
         </ul>
         <p class="summary">
           A Uno-style footprint sensor shield combining a 9-DOF IMU,
@@ -128,8 +128,8 @@
         <h2><a href="/products/mc_stepper/">Stepper Controller</a></h2>
         <p class="codename"><code>mc_stepper</code></p>
         <ul class="tags">
-          <li>Controller</li>
-          <li>CAN bus</li>
+          <li data-tag="controller">Controller</li>
+          <li data-tag="can">CAN bus</li>
         </ul>
         <p class="summary">
           A closed loop stepper controller in a NEMA 17 face plate footprint,
@@ -145,17 +145,17 @@
       </article>
 
       <article class="product-card" data-tags="tools"
-               data-keywords="firmware flashing flasher web serial browser tool utility STM32">
+               data-keywords="firmware flashing usb serial uart adapter flasher web serial browser tool utility STM32 pyblasher">
         <h2><a href="/products/blasher/">Blasher</a></h2>
         <p class="codename"><code>blasher</code></p>
         <ul class="tags">
-          <li>Tools</li>
+          <li data-tag="tools">Tools</li>
         </ul>
         <p class="summary">
-          A browser based firmware flashing and utility tool for ScalpelSpace
-          STM32 boards, talking to hardware over Web Serial with nothing to
-          install.
+          A USB to serial adapter that pairs with the Blasher web app to flash
+          and inspect ScalpelSpace STM32 boards straight from the browser.
         </p>
+        <p class="status-note">In development</p>
         <div class="links">
           <a class="btn btn-primary" href="/products/blasher/">View product</a>
           <a class="btn" href="https://shop.scalpelspace.com/">Coming soon!</a>
@@ -167,8 +167,8 @@
         <h2><a href="/products/can_hat_mini/">SPI-CAN Breakout</a></h2>
         <p class="codename"><code>can_hat_mini</code></p>
         <ul class="tags">
-          <li>CAN bus</li>
-          <li>Arduino</li>
+          <li data-tag="can">CAN bus</li>
+          <li data-tag="arduino">Arduino</li>
         </ul>
         <p class="summary">
           A small-footprint, breadboard-friendly breakout that bridges an SPI
@@ -187,8 +187,8 @@
         <h2><a href="/products/can_hat_40/">SPI-CAN 40-pin Hat</a></h2>
         <p class="codename"><code>can_hat_40</code></p>
         <ul class="tags">
-          <li>CAN bus</li>
-          <li>Raspberry Pi</li>
+          <li data-tag="can">CAN bus</li>
+          <li data-tag="rpi">Raspberry Pi</li>
         </ul>
         <p class="summary">
           A 40-pin GPIO hat that adds a CAN bus interface to single-board
